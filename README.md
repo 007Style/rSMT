@@ -1,6 +1,18 @@
 # rSMT
 
-A Java-based **Simultaneous Multi-Threading (SMT) processor simulator** written by **Daneyand Singley** in January 2009. The program models a simplified out-of-order processor pipeline with FXU (Fixed-point Execution Unit), FPU (Floating-point Execution Unit), and Branch execution units, then compares throughput with and without SMT enabled to quantify the cycle-count improvement.
+A Java-based **Reverse Simultaneous Multi-Threading (rSMT) processor simulator** written by **Daneyand Singley** in January 2009. The program models a simplified out-of-order processor pipeline with FXU (Fixed-point Execution Unit), FPU (Floating-point Execution Unit), and Branch execution units, then compares throughput with and without rSMT enabled to quantify the cycle-count improvement.
+
+> **This code is the evidence for [IBM Patent #US8595468](https://patents.google.com/patent/US8595468).**
+
+---
+
+## What is Reverse SMT?
+
+**Reverse Simultaneous Multithreading (rSMT)**, also conceptually known as **Inverse Hyper-Threading**, is a processor technology that allows multiple physical CPU cores to work together to execute a single, heavy thread.
+
+While traditional SMT splits one physical core into multiple logical cores to run separate instruction streams simultaneously, Reverse SMT does the exact opposite: it dynamically consolidates and distributes the load of a single heavily-threaded application across multiple underlying hardware cores to maximize single-threaded performance and instruction-level parallelism (ILP).
+
+IBM explored this concept in various microarchitecture designs and patent frameworks to balance workload throughput and latency. This simulator models the core scheduling behavior of rSMT — issuing a secondary instruction from the same thread into an available execution slot when the primary pipeline slot is stalled or idle — and measures the resulting cycle-count reduction versus a standard single-issue pipeline.
 
 ---
 
